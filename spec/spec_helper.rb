@@ -2,6 +2,7 @@
 
 require 'bundler/setup'
 require 'rggen/devtools/spec_helper'
+require 'support/matchers'
 
 require 'rggen/core'
 
