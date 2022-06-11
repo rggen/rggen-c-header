@@ -3,6 +3,7 @@
 require 'bundler/setup'
 require 'rggen/devtools/spec_helper'
 require 'support/matchers'
+require 'support/shared_context'
 
 require 'rggen/core'
 
@@ -17,7 +18,7 @@ RSpec.configure do |config|
 end
 
 require 'rggen/c_header'
-#RgGen::VHDL.plugin_spec.activate(builder)
+RgGen::CHeader.plugin_spec.activate(builder)
 
 RGGEN_ROOT = ENV['RGGEN_ROOT'] || File.expand_path('../..', __dir__)
 RGGEN_C_HEADER_ROOT = File.expand_path('..', __dir__)
