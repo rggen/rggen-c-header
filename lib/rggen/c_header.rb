@@ -18,7 +18,8 @@ module RgGen
       end
 
       plugin.files [
-        'c_header/bit_field/c_header'
+        'c_header/bit_field/c_header',
+        'c_header/register/c_header'
       ]
     end
   end

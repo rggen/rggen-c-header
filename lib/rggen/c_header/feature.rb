@@ -16,8 +16,8 @@ module RgGen
           Utility::MacroDefinition.new(name.upcase, value)
       end
 
-      def full_name
-        "#{register_block.name}_#{component.full_name('_')}"
+      def full_name(separator = '_')
+        [register_block.name, component.full_name(separator)].join(separator)
       end
     end
   end

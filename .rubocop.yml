@@ -9,3 +9,8 @@ inherit_gem:
 inherit_from:
   - .rubocop_todo.yml
 <% end %>
+
+Metrics/BlockLength:
+  IgnoredMethods:
+    - c_header
+    - define_simple_feature
