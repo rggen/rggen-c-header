@@ -2,7 +2,7 @@
 
 module RgGen
   module CHeader
-    class ComponentFactory < Core::OutputBase::DocumentComponentFactory
+    class ComponentFactory < Core::OutputBase::SourceFileComponentFactory
     end
 
     class FeatureFactory < Core::OutputBase::FeatureFactory
