@@ -77,9 +77,5 @@ RgGen.define_simple_feature(:register, :c_header) do
     def array_size
       [*register_files, register].flat_map(&:array_size).compact
     end
-
-    def register_files
-      register.ancestors.select(&:register_file?)
-    end
   end
 end
