@@ -1,47 +1,59 @@
+[![Gem Version](https://badge.fury.io/rb/rggen-c-header.svg)](https://badge.fury.io/rb/rggen-c-header)
 [![CI](https://github.com/rggen/rggen-c-header/actions/workflows/ci.yml/badge.svg)](https://github.com/rggen/rggen-c-header/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/abc9b4eea884c4b32805/maintainability)](https://codeclimate.com/github/rggen/rggen-c-header/maintainability)
 [![codecov](https://codecov.io/gh/rggen/rggen-c-header/branch/master/graph/badge.svg?token=kUhLlLvtv6)](https://codecov.io/gh/rggen/rggen-c-header)
+[![Gitter](https://badges.gitter.im/rggen/rggen.svg)](https://gitter.im/rggen/rggen?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Rggen::C::Header
+# RgGen::CHeader
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rggen/c/header`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+RgGen::CHeader is a RgGen plugin to generate C header file.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+To install RgGen::CHeader, use the following command:
 
-```ruby
-gem 'rggen-c-header'
 ```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install rggen-c-header
+$ gem install rggen-c-header
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+You need to tell RgGen to load RgGen::CHeader plugin. There are two ways.
 
-## Development
+### Using `--plugin` runtime option
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```
+$ rggen --plugin rggen-c-header your_register_map.yml
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Using `RGGEN_PLUGINS` environment variable
 
-## Contributing
+```
+$ export RGGEN_PLUGINS=${RGGEN_PLUGINS}:rggen-c-header
+$ rggen your_register_map.yml
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rggen-c-header. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/rggen-c-header/blob/master/CODE_OF_CONDUCT.md).
+## Example
 
-## License
+You can find sample C header files generated from sample register map specifications from [this repository](https://github.com/rggen/rggen-sample).
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+* https://github.com/rggen/rggen-sample/blob/master/block_0.h
+* https://github.com/rggen/rggen-sample/blob/master/block_1.h
+
+## Contact
+
+Feedbacks, bus reports, questions and etc. are welcome! You can post them bu using following ways:
+
+* [GitHub Issue Tracker](https://github.com/rggen/rggen/issues)
+* [GitHub Discussions](https://github.com/rggen/rggen/discussions)
+* [Chat Room](https://gitter.im/rggen/rggen)
+* [Mailing List](https://groups.google.com/d/forum/rggen)
+* [Mail](mailto:rggen@googlegroups.com)
+
+## Copyright & License
+
+Copyright &copy; 2022 Taichi Ishitani. RgGen::CHeader is licensed under the [MIT License](https://opensource.org/licenses/MIT), see [LICENSE](LICENSE) for futher details.
 
 ## Code of Conduct
 
-Everyone interacting in the Rggen::C::Header project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/rggen-c-header/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the RgGen::CHeader project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/rggen/rggen-c-header/blob/master/CODE_OF_CONDUCT.md).
