@@ -5,10 +5,7 @@ RSpec.describe 'register_block/c_header' do
   include_context 'c header common'
 
   before(:all) do
-    load_setup_files(RgGen.builder, [
-      File.join(RGGEN_ROOT, 'rggen-default-register-map/lib/rggen/default_register_map/setup.rb'),
-      File.join(RGGEN_C_HEADER_ROOT, 'lib/rggen/c_header/setup.rb')
-    ])
+    RgGen.enable_all
   end
 
   describe '#write_file' do
