@@ -8,21 +8,19 @@ require_relative 'c_header/feature'
 require_relative 'c_header/component'
 require_relative 'c_header/factories'
 
-module RgGen
-  module CHeader
-    extend Core::Plugin
+RgGen.setup_plugin :'rggen-c-header' do |plugin|
+  plugin.version RgGen::CHeader::VERSION
 
-    setup_plugin :'rggen-c-header' do |plugin|
-      plugin.register_component :c_header do
-        component Component, ComponentFactory
-        feature Feature, FeatureFactory
-      end
-
-      plugin.files [
-        'c_header/bit_field/c_header',
-        'c_header/register/c_header',
-        'c_header/register_block/c_header'
-      ]
-    end
+  plugin.register_component :c_header do
+    component RgGen::CHeader::Component,
+              RgGen::CHeader::ComponentFactory
+    feature RgGen::CHeader::Feature,
+            RgGen::CHeader::FeatureFactory
   end
+
+  plugin.files [
+    'c_header/register_block/c_header',
+    'c_header/register/c_header',
+    'c_header/bit_field/c_header'
+  ]
 end
