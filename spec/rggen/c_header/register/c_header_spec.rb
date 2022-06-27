@@ -5,7 +5,7 @@ RSpec.describe 'register/c_header' do
   include_context 'c header common'
 
   before(:all) do
-    RgGen.enable(:global, [:bus_width, :address_width])
+    RgGen.enable(:global, [:bus_width, :address_width, :enable_wide_register])
     RgGen.enable(:register_block, [:name, :byte_size])
     RgGen.enable(:register_file, [:name, :offset_address, :size])
     RgGen.enable(:register, [:name, :offset_address, :size, :type])
@@ -322,24 +322,6 @@ RSpec.describe 'register/c_header' do
         match_macro_definition('#define BLOCK_0_REGISTER_FILE_10_REGISTER_FILE_10_2_REGISTER_10_2_1_BYTE_OFFSET_1_1_0 0xe8'),
         match_macro_definition('#define BLOCK_0_REGISTER_FILE_10_REGISTER_FILE_10_2_REGISTER_10_2_1_BYTE_OFFSET_1_1_1 0xec')
       ])
-    end
-  end
-
-  describe 'エラーチェック' do
-    context 'レジスタ幅が64ビットを超える場合' do
-      it 'RegisterMapErrorを起こす' do
-        expect {
-          create_c_header do
-            name 'block_0'
-            byte_size 256
-            register do
-              name 'register_0'
-              offset_address 0x00
-              bit_field { name 'bit_field_0'; bit_assignment lsb: 64, width: 1; type :rw; initial_value 0 }
-            end
-          end
-        }.to raise_error RgGen::Core::RegisterMap::RegisterMapError, 'register of which width is wider than 64 bits is not allowed: block_0.register_0 width 96'
-      end
     end
   end
 end
