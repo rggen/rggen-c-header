@@ -2,15 +2,6 @@
 
 RgGen.define_simple_feature(:register, :c_header) do
   c_header do
-    pre_build do
-      if register.width > 64
-        message =
-          'register of which width is wider than 64 bits is not allowed: ' \
-          "#{full_name('.')} width #{register.width}"
-        raise RgGen::Core::RegisterMap::RegisterMapError.new(message)
-      end
-    end
-
     build do
       define_macro("#{full_name}_byte_width", byte_width)
       define_macro("#{full_name}_byte_size", byte_size)
