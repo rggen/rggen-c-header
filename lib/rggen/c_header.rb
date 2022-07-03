@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative 'c_header/version'
+require_relative 'c_header/utility/declaration'
+require_relative 'c_header/utility/struct_definition'
 require_relative 'c_header/utility/macro_definition'
 require_relative 'c_header/utility/source_file'
 require_relative 'c_header/utility'
