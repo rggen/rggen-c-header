@@ -9,6 +9,13 @@ RgGen.define_simple_feature(:register, :c_header) do
       define_offset_address_macros
     end
 
+    export def declaration
+      type = "uint#{register.width}_t"
+      name = register.name
+      size = !shared_address? && register.size || nil
+      create_declaration(type, name, size)
+    end
+
     private
 
     def byte_width
@@ -21,6 +28,10 @@ RgGen.define_simple_feature(:register, :c_header) do
 
     def array?
       register_files.any?(&:array?) || register.array?
+    end
+
+    def shared_address?
+      register.settings[:support_shared_address]
     end
 
     def define_array_macros
@@ -48,7 +59,7 @@ RgGen.define_simple_feature(:register, :c_header) do
 
     def local_address_list
       Array.new(register.count) do |i|
-        if register.settings[:support_shared_address]
+        if shared_address?
           register.offset_address
         else
           register.offset_address + register.byte_width * i
