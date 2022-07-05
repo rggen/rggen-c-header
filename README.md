@@ -8,29 +8,18 @@
 
 RgGen::CHeader is a RgGen plugin to generate C header file.
 
-## Installation
+## Installati
 
-To install RgGen::CHeader, use the following command:
+During RgGen installation, RgGen::CHeader will also be installed autoamtically.
+
+```
+$ gem install rggen
+```
+
+If you want to install RgGen::CHeader only, use the command below.
 
 ```
 $ gem install rggen-c-header
-```
-
-## Usage
-
-You need to tell RgGen to load RgGen::CHeader plugin. There are two ways.
-
-### Using `--plugin` runtime option
-
-```
-$ rggen --plugin rggen-c-header your_register_map.yml
-```
-
-### Using `RGGEN_PLUGINS` environment variable
-
-```
-$ export RGGEN_PLUGINS=${RGGEN_PLUGINS}:rggen-c-header
-$ rggen your_register_map.yml
 ```
 
 ## Example
