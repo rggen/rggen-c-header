@@ -15,149 +15,149 @@ RSpec.describe 'register/c_header' do
     RgGen.enable(:register, :c_header)
   end
 
-  describe 'マクロ定義' do
-    let(:c_header) do
-      c_header = create_c_header do
-        name 'block_0'
-        byte_size 256
+  let(:c_header) do
+    c_header = create_c_header do
+      name 'block_0'
+      byte_size 256
+
+      register do
+        name 'register_0'
+        offset_address 0x00
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 4; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_1'
+        offset_address 0x04
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 32, width: 4; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_2'
+        offset_address 0x0c
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :wo; initial_value 0 }
+      end
+
+      register do
+        name 'register_3'
+        offset_address 0x0c
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :ro }
+      end
+
+      register do
+        name 'register_4'
+        offset_address 0x10
+        size [4]
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_5'
+        offset_address 0x20
+        size [2, 2]
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_6'
+        offset_address 0x30
+        size [4]
+        type [:indirect, 'register_0.bit_field_0']
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_7'
+        offset_address 0x34
+        size [2, 2]
+        type [:indirect, 'register_0.bit_field_0', 'register_1.bit_field_0']
+        bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+      end
+
+      register do
+        name 'register_8'
+        offset_address 0x40
+        size [4]
+        type :external
+      end
+
+      register_file do
+        name 'register_file_9'
+        offset_address 0x50
 
         register do
-          name 'register_0'
+          name 'register_9_0'
           offset_address 0x00
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 4; type :rw; initial_value 0 }
+          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
         end
 
         register do
-          name 'register_1'
-          offset_address 0x04
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 32, width: 4; type :rw; initial_value 0 }
+          name 'register_9_1'
+          offset_address 0x08
+          size [2]
+          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
         end
 
-        register do
-          name 'register_2'
-          offset_address 0x0c
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :wo; initial_value 0 }
-        end
-
-        register do
-          name 'register_3'
-          offset_address 0x0c
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :ro }
-        end
-
-        register do
-          name 'register_4'
+        register_file do
+          name 'register_file_9_2'
           offset_address 0x10
-          size [4]
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-        end
-
-        register do
-          name 'register_5'
-          offset_address 0x20
-          size [2, 2]
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-        end
-
-        register do
-          name 'register_6'
-          offset_address 0x30
-          size [4]
-          type [:indirect, 'register_0.bit_field_0']
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-        end
-
-        register do
-          name 'register_7'
-          offset_address 0x34
-          size [2, 2]
-          type [:indirect, 'register_0.bit_field_0', 'register_1.bit_field_0']
-          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-        end
-
-        register do
-          name 'register_8'
-          offset_address 0x40
-          size [4]
-          type :external
-        end
-
-        register_file do
-          name 'register_file_9'
-          offset_address 0x50
 
           register do
-            name 'register_9_0'
+            name 'register_9_2_0'
             offset_address 0x00
             bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
           end
 
           register do
-            name 'register_9_1'
+            name 'register_9_2_1'
             offset_address 0x08
             size [2]
             bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-          end
-
-          register_file do
-            name 'register_file_9_2'
-            offset_address 0x10
-
-            register do
-              name 'register_9_2_0'
-              offset_address 0x00
-              bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-            end
-
-            register do
-              name 'register_9_2_1'
-              offset_address 0x08
-              size [2]
-              bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-            end
-          end
-        end
-
-        register_file do
-          name 'register_file_10'
-          offset_address 0x70
-          size [2, 2]
-
-          register do
-            name 'register_10_0'
-            offset_address 0x00
-            bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-          end
-
-          register do
-            name 'register_10_1'
-            offset_address 0x08
-            size [2]
-            bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-          end
-
-          register_file do
-            name 'register_file_10_2'
-            offset_address 0x10
-
-            register do
-              name 'register_10_2_0'
-              offset_address 0x00
-              bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-            end
-
-            register do
-              name 'register_10_2_1'
-              offset_address 0x08
-              size [2]
-              bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
-            end
           end
         end
       end
-      c_header.registers
-    end
 
+      register_file do
+        name 'register_file_10'
+        offset_address 0x70
+        size [2, 2]
+
+        register do
+          name 'register_10_0'
+          offset_address 0x00
+          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+        end
+
+        register do
+          name 'register_10_1'
+          offset_address 0x08
+          size [2]
+          bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+        end
+
+        register_file do
+          name 'register_file_10_2'
+          offset_address 0x10
+
+          register do
+            name 'register_10_2_0'
+            offset_address 0x00
+            bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+          end
+
+          register do
+            name 'register_10_2_1'
+            offset_address 0x08
+            size [2]
+            bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+          end
+        end
+      end
+    end
+    c_header.registers
+  end
+
+  describe 'マクロ定義' do
     it 'バイト幅/バイト長/配列次元/配列長/オフセットアドレスを示すマクロを定義する' do
       expect(c_header[0].macro_definitions).to match([
         match_macro_definition('#define BLOCK_0_REGISTER_0_BYTE_WIDTH 4'),
@@ -322,6 +322,26 @@ RSpec.describe 'register/c_header' do
         match_macro_definition('#define BLOCK_0_REGISTER_FILE_10_REGISTER_FILE_10_2_REGISTER_10_2_1_BYTE_OFFSET_1_1_0 0xe8'),
         match_macro_definition('#define BLOCK_0_REGISTER_FILE_10_REGISTER_FILE_10_2_REGISTER_10_2_1_BYTE_OFFSET_1_1_1 0xec')
       ])
+    end
+  end
+
+  describe '#declaration' do
+    it '変数宣言を行うコードを返す' do
+      expect(c_header[0].declaration).to match_string('uint32_t register_0')
+      expect(c_header[1].declaration).to match_string('uint64_t register_1')
+      expect(c_header[4].declaration).to match_string('uint32_t register_4[4]')
+      expect(c_header[5].declaration).to match_string('uint32_t register_5[2][2]')
+      expect(c_header[6].declaration).to match_string('uint32_t register_6')
+      expect(c_header[7].declaration).to match_string('uint32_t register_7')
+      expect(c_header[8].declaration).to match_string('uint32_t register_8[4]')
+      expect(c_header[9].declaration).to match_string('uint32_t register_9_0')
+      expect(c_header[10].declaration).to match_string('uint32_t register_9_1[2]')
+      expect(c_header[11].declaration).to match_string('uint32_t register_9_2_0')
+      expect(c_header[12].declaration).to match_string('uint32_t register_9_2_1[2]')
+      expect(c_header[13].declaration).to match_string('uint32_t register_10_0')
+      expect(c_header[14].declaration).to match_string('uint32_t register_10_1[2]')
+      expect(c_header[15].declaration).to match_string('uint32_t register_10_2_0')
+      expect(c_header[16].declaration).to match_string('uint32_t register_10_2_1[2]')
     end
   end
 end

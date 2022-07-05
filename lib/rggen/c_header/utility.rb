@@ -11,8 +11,17 @@ module RgGen
 
       private
 
-      def hex(value)
-        format('0x%x', value)
+      def hex(value, width = nil)
+        if width
+          print_width = ([1, value.bit_length, width].max + 3) / 4
+          format('0x%0*x', print_width, value)
+        else
+          format('0x%x', value)
+        end
+      end
+
+      def create_declaration(type, name, array_size = nil)
+        Declaration.new(type, name, array_size)
       end
     end
   end
