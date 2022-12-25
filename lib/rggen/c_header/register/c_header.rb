@@ -23,15 +23,19 @@ RgGen.define_simple_feature(:register, :c_header) do
     end
 
     def byte_size
-      array_size_upper_layer.inject(1, :*) * register.byte_size
+      register.byte_size(hierarchical: true)
     end
 
     def array?
-      register_files.any?(&:array?) || register.array?
+      register.array?(hierarchical: true)
     end
 
     def shared_address?
       register.settings[:support_shared_address]
+    end
+
+    def array_size
+      register.array_size(hierarchical: true)
     end
 
     def define_array_macros
@@ -53,31 +57,12 @@ RgGen.define_simple_feature(:register, :c_header) do
     end
 
     def address_list
-      upper_address_list = register_file&.expanded_offset_addresses || [0]
-      upper_address_list.product(local_address_list).map(&:sum)
-    end
-
-    def local_address_list
-      Array.new(register.count) do |i|
-        if shared_address?
-          register.offset_address
-        else
-          register.offset_address + register.byte_width * i
-        end
-      end
+      register.expanded_offset_addresses
     end
 
     def array_suffix
       index_list = array_size.map { |size| size.times.to_a }
       index_list.first.product(*index_list[1..]).map { |index| index.join('_') }
-    end
-
-    def array_size_upper_layer
-      register_files.flat_map(&:array_size).compact
-    end
-
-    def array_size
-      [*register_files, register].flat_map(&:array_size).compact
     end
   end
 end
