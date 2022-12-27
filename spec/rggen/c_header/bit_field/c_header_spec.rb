@@ -76,75 +76,75 @@ RSpec.describe 'bit_field/c_header' do
 
     it 'ビット幅/ビットマスク/ビット位置を示すマクロが定義される' do
       expect(c_header[0].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_WIDTH', 1),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_MASK',  '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
 
       expect(c_header[1].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_WIDTH 4'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_MASK 0xf'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_OFFSET 16')
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_WIDTH', 4),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_MASK', '0xf'),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_1_BIT_OFFSET', 16)
       ])
 
       expect(c_header[2].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_WIDTH 16'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_MASK 0xffff'),
-        match_macro_definition('#define BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_OFFSET 24')
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_WIDTH', 16),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_MASK', '0xffff'),
+        match_macro_definition('BLOCK_0_REGISTER_0_BIT_FIELD_2_BIT_OFFSET', 24)
       ])
 
       expect(c_header[3].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_1_BIT_WIDTH 64'),
-        match_macro_definition('#define BLOCK_0_REGISTER_1_BIT_MASK 0xffffffffffffffff'),
-        match_macro_definition('#define BLOCK_0_REGISTER_1_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_1_BIT_WIDTH', 64),
+        match_macro_definition('BLOCK_0_REGISTER_1_BIT_MASK', '0xffffffffffffffff'),
+        match_macro_definition('BLOCK_0_REGISTER_1_BIT_OFFSET', 0)
       ])
 
       expect(c_header[4].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_WIDTH 4'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_MASK 0xf'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_0 0'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_1 8'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_2 16'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_3 24')
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_WIDTH', 4),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_MASK', '0xf'),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_0', 0),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_1', 8),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_2', 16),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_0_BIT_OFFSET_3', 24)
       ])
 
       expect(c_header[5].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_WIDTH 4'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_MASK 0xf'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_0 4'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_1 12'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_2 20'),
-        match_macro_definition('#define BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_3 28')
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_WIDTH', 4),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_MASK', '0xf'),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_0', 4),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_1', 12),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_2', 20),
+        match_macro_definition('BLOCK_0_REGISTER_2_BIT_FIELD_1_BIT_OFFSET_3', 28)
       ])
 
       expect(c_header[6].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_WIDTH', 1),
+        match_macro_definition('BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_MASK', '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_3_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
 
       expect(c_header[7].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_WIDTH', 1),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_MASK', '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_0_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
 
       expect(c_header[8].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_WIDTH ',1),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_MASK', '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_4_1_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
 
       expect(c_header[9].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_WIDTH', 1),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_MASK', '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_0_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
 
       expect(c_header[10].macro_definitions).to match([
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_WIDTH 1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_MASK 0x1'),
-        match_macro_definition('#define BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_OFFSET 0')
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_WIDTH', 1),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_MASK', '0x1'),
+        match_macro_definition('BLOCK_0_REGISTER_FILE_4_REGISTER_FILE_4_2_REGISTER_4_2_1_BIT_FIELD_0_BIT_OFFSET', 0)
       ])
     end
   end

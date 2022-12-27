@@ -26,9 +26,9 @@ RSpec.describe RgGen::CHeader::Feature do
       feature.instance_eval { define_macro 'BAZ', hex(0xdead_beaf) }
 
       expect(feature.macro_definitions).to match([
-        match_macro_definition('#define FOO'),
-        match_macro_definition('#define BAR 0'),
-        match_macro_definition('#define BAZ 0xdeadbeaf')
+        match_macro_definition('FOO'),
+        match_macro_definition('BAR', 0),
+        match_macro_definition('BAZ', '0xdeadbeaf')
       ])
     end
   end
