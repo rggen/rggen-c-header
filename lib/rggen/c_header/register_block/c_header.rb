@@ -20,10 +20,8 @@ RgGen.define_simple_feature(:register_block, :c_header) do
     write_file '<%= register_block.name %>.h' do |f|
       f.include_guard
       f.include_file 'stdint.h'
+      f.macro_definitions register_block.macro_definitions
       f.body do |code|
-        register_block.macro_definitions.each do |macro|
-          code << macro << nl
-        end
         register_block.struct_definitions.each do |struct|
           code << struct
         end

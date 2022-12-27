@@ -17,7 +17,7 @@ module RgGen
 
       def define_macro(name, value = nil)
         macro_definitions <<
-          Utility::MacroDefinition.new(name.upcase, value)
+          Core::Utility::CodeUtility::MacroDefinition.new(name.upcase, value)
       end
 
       def define_struct(name, members)

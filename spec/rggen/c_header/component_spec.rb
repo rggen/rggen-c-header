@@ -41,8 +41,8 @@ RSpec.describe RgGen::CHeader::Component do
       features[1].instance_eval { define_macro 'BAR_0_1' }
 
       expect(components[0].macro_definitions).to match([
-        match_macro_definition('#define FOO_0_0'), match_macro_definition('#define FOO_0_1'),
-        match_macro_definition('#define BAR_0_0'), match_macro_definition('#define BAR_0_1')
+        match_macro_definition('FOO_0_0'), match_macro_definition('FOO_0_1'),
+        match_macro_definition('BAR_0_0'), match_macro_definition('BAR_0_1')
       ])
 
       features[2].instance_eval { define_macro 'FOO_1_0' }
@@ -51,10 +51,10 @@ RSpec.describe RgGen::CHeader::Component do
       features[3].instance_eval { define_macro 'BAR_1_1' }
 
       expect(components[0].macro_definitions).to match([
-        match_macro_definition('#define FOO_1_0'), match_macro_definition('#define FOO_1_1'),
-        match_macro_definition('#define BAR_1_0'), match_macro_definition('#define BAR_1_1'),
-        match_macro_definition('#define FOO_0_0'), match_macro_definition('#define FOO_0_1'),
-        match_macro_definition('#define BAR_0_0'), match_macro_definition('#define BAR_0_1')
+        match_macro_definition('FOO_1_0'), match_macro_definition('FOO_1_1'),
+        match_macro_definition('BAR_1_0'), match_macro_definition('BAR_1_1'),
+        match_macro_definition('FOO_0_0'), match_macro_definition('FOO_0_1'),
+        match_macro_definition('BAR_0_0'), match_macro_definition('BAR_0_1')
       ])
 
       features[4].instance_eval { define_macro 'FOO_2_0' }
@@ -63,12 +63,12 @@ RSpec.describe RgGen::CHeader::Component do
       features[5].instance_eval { define_macro 'BAR_2_1' }
 
       expect(components[0].macro_definitions).to match([
-        match_macro_definition('#define FOO_2_0'), match_macro_definition('#define FOO_2_1'),
-        match_macro_definition('#define BAR_2_0'), match_macro_definition('#define BAR_2_1'),
-        match_macro_definition('#define FOO_1_0'), match_macro_definition('#define FOO_1_1'),
-        match_macro_definition('#define BAR_1_0'), match_macro_definition('#define BAR_1_1'),
-        match_macro_definition('#define FOO_0_0'), match_macro_definition('#define FOO_0_1'),
-        match_macro_definition('#define BAR_0_0'), match_macro_definition('#define BAR_0_1')
+        match_macro_definition('FOO_2_0'), match_macro_definition('FOO_2_1'),
+        match_macro_definition('BAR_2_0'), match_macro_definition('BAR_2_1'),
+        match_macro_definition('FOO_1_0'), match_macro_definition('FOO_1_1'),
+        match_macro_definition('BAR_1_0'), match_macro_definition('BAR_1_1'),
+        match_macro_definition('FOO_0_0'), match_macro_definition('FOO_0_1'),
+        match_macro_definition('BAR_0_0'), match_macro_definition('BAR_0_1')
       ])
     end
   end
