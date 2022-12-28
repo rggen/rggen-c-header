@@ -11,6 +11,6 @@ inherit_from:
 <% end %>
 
 Metrics/BlockLength:
-  IgnoredMethods:
+  AllowedMethods:
     - c_header
     - define_simple_feature
