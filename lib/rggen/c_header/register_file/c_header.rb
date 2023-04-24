@@ -21,7 +21,7 @@ RgGen.define_simple_feature(:register_file, :c_header) do
     end
 
     def byte_size
-      register_file.byte_size(false)
+      register_file.entry_byte_size
     end
   end
 end

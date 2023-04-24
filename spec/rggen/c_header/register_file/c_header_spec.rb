@@ -104,10 +104,29 @@ RSpec.describe 'register_file/c_header' do
           end
         end
 
+        register_file do
+          name 'register_file_9'
+          offset_address 0x80
+          size [2, step: 32]
+
+          register do
+            name 'register_9_0'
+            offset_address 0x00
+            size [2, step: 8]
+            bit_field { name 'bit_field_9_0_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+          end
+
+          register do
+            name 'register_9_1'
+            offset_address 0x18
+            bit_field { name 'bit_field_9_1_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+          end
+        end
+
         register do
-          name 'register_9_0'
-          offset_address 0x90
-          bit_field { name 'bit_field_9_0_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
+          name 'register_10_0'
+          offset_address 0xc0
+          bit_field { name 'bit_field_10_0_0'; bit_assignment lsb: 0, width: 1; type :rw; initial_value 0 }
         end
       end
     end
@@ -118,6 +137,7 @@ RSpec.describe 'register_file/c_header' do
     it '宣言を行うコードを返す' do
       expect(c_header[0].declaration).to match_string('block_register_file_t register_file')
       expect(c_header[1].declaration).to match_string('block_register_file_register_file_8_t register_file_8[2][2]')
+      expect(c_header[2].declaration).to match_string('block_register_file_register_file_9_t register_file_9[2]')
     end
   end
 
@@ -140,27 +160,37 @@ RSpec.describe 'register_file/c_header' do
       CODE
 
       expect(c_header[0].struct_definitions[2]).to match_string(<<~'CODE')
+        typedef struct {
+          uint64_t register_9_0[2];
+          uint32_t __reserved_0x10;
+          uint32_t __reserved_0x14;
+          uint32_t register_9_1;
+          uint32_t __reserved_0x1c;
+        } block_register_file_register_file_9_t;
+      CODE
+
+      expect(c_header[0].struct_definitions[3]).to match_string(<<~'CODE')
         typedef union {
           uint32_t register_2;
           uint32_t register_3;
         } block_register_file_reg_0x20_t;
       CODE
 
-      expect(c_header[0].struct_definitions[3]).to match_string(<<~'CODE')
+      expect(c_header[0].struct_definitions[4]).to match_string(<<~'CODE')
         typedef union {
           uint32_t register_4[2];
           uint32_t register_5[2][1];
         } block_register_file_reg_0x24_t;
       CODE
 
-      expect(c_header[0].struct_definitions[4]).to match_string(<<~'CODE')
+      expect(c_header[0].struct_definitions[5]).to match_string(<<~'CODE')
         typedef union {
           uint32_t register_6;
           uint32_t register_7;
         } block_register_file_reg_0x30_t;
       CODE
 
-      expect(c_header[0].struct_definitions[5]).to match_string(<<~'CODE')
+      expect(c_header[0].struct_definitions[6]).to match_string(<<~'CODE')
         typedef struct {
           uint32_t __reserved_0x00;
           uint32_t register_0;
@@ -177,11 +207,8 @@ RSpec.describe 'register_file/c_header' do
           uint32_t __reserved_0x38;
           uint32_t __reserved_0x3c;
           block_register_file_register_file_8_t register_file_8[2][2];
-          uint32_t __reserved_0x80;
-          uint32_t __reserved_0x84;
-          uint32_t __reserved_0x88;
-          uint32_t __reserved_0x8c;
-          uint32_t register_9_0;
+          block_register_file_register_file_9_t register_file_9[2];
+          uint32_t register_10_0;
         } block_register_file_t;
       CODE
     end

@@ -10,7 +10,7 @@ RgGen.define_simple_feature(:register, :c_header) do
     end
 
     export def declaration
-      type = "uint#{register.width}_t"
+      type = "uint#{entry_width}_t"
       name = register.name
       size = !shared_address? && register.size || nil
       create_declaration(type, name, size)
@@ -23,7 +23,11 @@ RgGen.define_simple_feature(:register, :c_header) do
     end
 
     def byte_size
-      register.byte_size(hierarchical: true)
+      register.total_byte_size(hierarchical: true)
+    end
+
+    def entry_width
+      register.entry_byte_size * 8
     end
 
     def array?
