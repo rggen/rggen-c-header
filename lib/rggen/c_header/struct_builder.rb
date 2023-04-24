@@ -28,9 +28,9 @@ module RgGen
       def define_struct_member(offset)
         entries = select_children_by_offset(offset)
         if entries.size >= 2
-          [define_shared_union(offset, entries), entries.first.byte_size]
+          [define_shared_union(offset, entries), entries.first.total_byte_size]
         elsif entries.size == 1
-          [entries.first.declaration, entries.first.byte_size]
+          [entries.first.declaration, entries.first.total_byte_size]
         else
           [reserved_member(offset), bus_byte_width]
         end
