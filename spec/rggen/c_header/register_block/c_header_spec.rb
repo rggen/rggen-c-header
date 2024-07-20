@@ -5,7 +5,14 @@ RSpec.describe 'register_block/c_header' do
   include_context 'c header common'
 
   before(:all) do
+    RgGen.define_simple_feature(:register_block, :protocol) do
+      configuration { build {} }
+    end
     RgGen.enable_all
+  end
+
+  after(:all) do
+    RgGen.delete(:register_block, :protocol)
   end
 
   context '幅広レジスタが許可されている場合' do
