@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = 'C header file writer plugin for RgGen'
   spec.homepage = 'https://github.com/rggen/rggen-c-header'
   spec.license = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 3.0.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 3.1')
 
   spec.metadata = {
     'bug_tracker_uri' => 'https://github.com/rggen/rggen/issues',
