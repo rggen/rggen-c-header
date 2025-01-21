@@ -58,11 +58,11 @@ module RgGen
       end
 
       def bus_width
-        configuration.bus_width
+        register_block.bus_width
       end
 
       def bus_byte_width
-        configuration.byte_width
+        register_block.byte_width
       end
     end
   end
