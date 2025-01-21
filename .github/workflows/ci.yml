@@ -46,6 +46,14 @@ jobs:
         run: |
           ${RGGEN_ROOT}/rggen-devtools/bin/checkout.rb
 
+      - name: Checkout stdgems-version gem
+        uses: actions/checkout@v4
+        with:
+          repository: taichi-ishitani/stdgems-version
+          path: stdgems-version
+          fetch-depth: 0
+          submodules: true
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
