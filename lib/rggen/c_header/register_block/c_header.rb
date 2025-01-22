@@ -9,7 +9,7 @@ RgGen.define_simple_feature(:register_block, :c_header) do
         message =
           'enabling wide register is not allowed ' \
           'for c header file generation'
-        raise RgGen::Core::Configuration::ConfigurationError.new(message)
+        raise RgGen::Core::SourceError.new(message)
       end
     end
 

@@ -16,7 +16,7 @@ RSpec.describe 'register_block/c_header' do
   end
 
   context '幅広レジスタが許可されている場合' do
-    it 'ConfigurationErrorを起こす' do
+    it 'SourceErrorを起こす' do
       configuration =
         create_configuration(enable_wide_register: true)
       expect {
@@ -30,8 +30,7 @@ RSpec.describe 'register_block/c_header' do
             bit_field { name 'bit_field_0'; bit_assignment lsb: 0, width: 4; type :rw; initial_value 0 }
           end
         end
-      }.to raise_error RgGen::Core::Configuration::ConfigurationError,
-                       'enabling wide register is not allowed for c header file generation'
+      }.to raise_source_error 'enabling wide register is not allowed for c header file generation'
     end
   end
 
